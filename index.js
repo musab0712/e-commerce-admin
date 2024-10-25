@@ -10,7 +10,7 @@ main()
 
 async function main() {
   await mongoose.connect(
-    "mongodb+srv://musabhassan1999:Hassan123@cluster0.dg2aakn.mongodb.net/"
+    "mongodb+srv://musabhassan1999:Hassan123@cluster0.dg2aakn.mongodb.net/megamart"
   );
 }
 
@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "https://localhost:3000/",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Authorization",
@@ -28,12 +28,12 @@ app.use(
       "Expires",
       "Pragma",
     ],
-    credentials: true
+    credentials: true,
   })
 );
 
 app.use(cookieParser());
 app.use(express.json());
-app.use('/api/auth', authRouter)
+app.use("/api/auth", authRouter);
 
-app.listen(PORT, ()=> console.log(`server is listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`server is listening on port ${PORT}`));
